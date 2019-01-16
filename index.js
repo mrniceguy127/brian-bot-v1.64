@@ -26,7 +26,7 @@ slackBot.startRTM((err, bot, payload) => {
   }
 });
 
-slackController.hears(["mantissa"], ["ambient"], (bot, message) => {
+slackController.hears(["mantissa"], ["ambient", "direct_message"], (bot, message) => {
   bot.startConversation(message, (err, conversation) => {
     conversation.say("BEWARE!");
   });
