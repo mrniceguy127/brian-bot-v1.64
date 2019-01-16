@@ -1,0 +1,27 @@
+{
+  "name": "brian-bot-v1.64",
+  "version": "1.0.0",
+  "description": "Brian bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrniceguy127/brian-bot-v1.64.git"
+  },
+  "keywords": [
+    "brian",
+    "stuart"
+  ],
+  "author": "Matthew Kleiner and Phoenix Logan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrniceguy127/brian-bot-v1.64/issues"
+  },
+  "homepage": "https://github.com/mrniceguy127/brian-bot-v1.64#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "request": "^2.88.0"
+  }
+}
