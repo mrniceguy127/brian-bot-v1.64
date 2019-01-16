@@ -11,7 +11,7 @@ const slackSigningSecret = process.env.CLIENT_SIGNING_SECRET;
 
 const slackController = Botkit.slackbot({
   require_delivery: true,
-  clientSigningSecret: clientSigningSecret
+  clientSigningSecret: slackSigningSecret
 });
 
 const slackBot = slackController.spawn({
