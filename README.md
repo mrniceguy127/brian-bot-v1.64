@@ -1,2 +1,2 @@
 # brian-bot-v1.64
-Brian bot.
+The greatest thing since sliced bread.
