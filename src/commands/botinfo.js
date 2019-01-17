@@ -9,7 +9,7 @@ class BotInfo extends Command {
     let options = {
       name: "botinfo",
       description: "Get info about the bot.",
-      format: "bls.botinfo"
+      format: "botinfo"
     };
     super(client, options);
   }
@@ -19,7 +19,7 @@ class BotInfo extends Command {
     let client = this.client;
     let infoMessage = {
       link_names: 2,
-      text: 'Authors: <@UFGTEU3TQ> and <@UFGTDHK0W>'
+      text: 'Author(s): <@UFGTEU3TQ> and <@UFGTDHK0W>\nMemer(s): <@UF7GNJVS7>, <@UFGTEU3TQ>, and <@UFGTDHK0W> \nSource Code: https://github.com/mrniceguy127/brian-bot-v1.64'
     }
 
     client.say(message, infoMessage);

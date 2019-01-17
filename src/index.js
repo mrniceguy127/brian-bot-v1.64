@@ -8,6 +8,7 @@ const Client = require('../lib/client/client');
 const slackToken = process.env.CLIENT_TOKEN;
 const slackOAuth = process.env.CLIENT_OAUTH;
 const slackSigningSecret = process.env.CLIENT_SIGNING_SECRET;
+const commandPrefix = process.env.COMMAND_PREFIX;
 
 const slackController = Botkit.slackbot({
   require_delivery: true,
@@ -26,7 +27,7 @@ slackBot.startRTM((err, bot, payload) => {
   }
 });
 
-const client = new Client(slackBot, slackController, process.env.COMMAND_PREFIX);
+const client = new Client(slackBot, slackController, commandPrefix);
 
 client.loadCommands('./src/commands');
 client.listenForCommands();

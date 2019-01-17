@@ -9,7 +9,7 @@ class BotHelp extends Command {
     let options = {
       name: "bothelp",
       description: "See the bot's commands.",
-      format: "bls.bothelp"
+      format: "bothelp"
     };
     super(client, options);
   }

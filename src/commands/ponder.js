@@ -7,7 +7,7 @@ class Ponder extends Command {
     let options = {
       name: "ponder",
       description: "Enables Brian L. Stuart to opine about various subjects of interest to Him.",
-      format: "bls.ponder"
+      format: "ponder"
     };
     super(client, options);
   }
