@@ -1,5 +1,7 @@
 'use-strict';
 
+// Initializes bot and listens for command use.
+
 const Botkit = require('botkit');
 const Client = require('../lib/client/client');
 

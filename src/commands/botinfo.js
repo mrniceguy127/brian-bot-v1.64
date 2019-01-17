@@ -1,5 +1,7 @@
 'use-strict';
 
+// Info about the bot.
+
 const Command = require('../../lib/commands/command.js');
 
 class BotInfo extends Command {

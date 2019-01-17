@@ -1,5 +1,7 @@
 'use-strict';
 
+// Bot help command.
+
 const Command = require('../../lib/commands/command.js');
 
 class BotHelp extends Command {
@@ -16,10 +18,10 @@ class BotHelp extends Command {
   {
     let client = this.client;
 
-    let helpMessage = '*Help*\n';
+    let helpMessage = '*Help*\n'; // Message header.
 
     Array.from(client.commands.values()).forEach(command => {
-      helpMessage += `\t*${command.name}* - _${command.description}_\n\t\t*Format* - ${command.format}\n`;
+      helpMessage += `\t*${command.name}* - _${command.description}_\n\t\t*Format* - ${command.format}\n`; // Message formatting.
     });
 
     client.say(message, helpMessage);
