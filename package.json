@@ -23,6 +23,7 @@
   "homepage": "https://github.com/mrniceguy127/brian-bot-v1.64#readme",
   "dependencies": {
     "botkit": "^0.7.0",
+    "canvas": "^2.0.1",
     "dotenv": "^6.2.0",
     "request": "^2.88.0"
   }
