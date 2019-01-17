@@ -1,3 +1,5 @@
+'use-strict';
+
 const Command = require('../../lib/commands/command.js');
 
 class Ponder extends Command {
@@ -10,8 +12,10 @@ class Ponder extends Command {
     super(client, options);
   }
 
-  run(message)
+  async run(message)
   {
+    let client = this.client;
+
     let thoughts = [ // Array of Brian's opinions.
       "Floating-point is evil.",
       "JS frameworks are unnecessary.",
@@ -24,9 +28,7 @@ class Ponder extends Command {
 
     let thought = thoughts[i];
 
-    this.client.botkitBot.startConversation(message, (error, conversation) => {
-      conversation.say(thought);
-    });
+    client.say(message, thought);
   }
 }
 module.exports = Ponder;

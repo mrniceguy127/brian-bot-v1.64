@@ -1,3 +1,5 @@
+'use-strict';
+
 const Command = require('../../lib/commands/command.js');
 const { getOverlayedImage } = require('../../lib/utils/image-overlayer');
 const request = require('request');
@@ -16,15 +18,11 @@ class Hat extends Command {
     super(client, options);
   }
 
-  run(message) {
-    let say = (thingToSay) => {
-      this.client.botkitBot.startConversation(message, (error, conversation) => {
-        conversation.say(thingToSay);
-      });
-    }
+  async run(message) {
+    let client = this.client;
 
     if (busy) {
-      say("I'm already making an image. I'm only one man!");
+      client.say(message, "I'm already making an image. I'm only one man!");
     } else {
       busy = true;
       const messageText = message.text;
@@ -44,7 +42,7 @@ class Hat extends Command {
                     if (res.headers['content-type'].startsWith('image/')) {
                       let hatImageURL = imageURL.href;
                       getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 165, y: 25, w: 175, h: 175 }).then((imageBuffer) => {
-                        fs.writeFile(__dirname + "/temp/hat/hat.png", imageBuffer, () => {
+                        fs.writeFile(path.join(__dirname, "/temp/hat/hat.png"), imageBuffer, () => {
                           request.post({
                             url: 'https://slack.com/api/files.upload',
                             formData: {
@@ -53,39 +51,39 @@ class Hat extends Command {
                               filename: "hat.png",
                               filetype: "png",
                               channels: message.channel,
-                              file: fs.createReadStream(__dirname + "/temp/hat/hat.png"),
+                              file: fs.createReadStream(path.join(__dirname, "/temp/hat/hat.png")),
                             },
                           }, (err, res) => {
                             if (err) {
-                              this.client.botkitBot.botkit.log("Error uploading image!", err);
+                              client.log("Error uploading image!", err);
                             }
                             busy = false;
                           });
                         });
                       }).catch((err) => {
-                        this.client.botkitBot.botkit.log(err.stack);
+                        client.log(err.stack);
                         busy = false;
                       });
                     } else {
-                      say("That URL does not return a valid image!");
+                      client.say(message, "That URL does not return a valid image!");
                       busy = false;
                     }
                   } else {
-                    say("Pleaase provide a working image URL!");
+                    client.say(message, "Pleaase provide a working image URL!");
                     busy = false;
                   }
                 } else {
-                  say('Error getting image from URL!');
+                  client.say(message, 'Error getting image from URL!');
                   busy = false;
                 }
               });
             } else {
-              say("The image URL must be served over the HTTPS protocol!");
+              client.say(message, "The image URL must be served over the HTTPS protocol!");
               busy = false;
             }
           }
         } catch (err) {
-          say("Error creating image! Did you enter a valid URL?");
+          client.say(message, "Error creating image! Did you enter a valid URL?");
           busy = false;
         }
       }
