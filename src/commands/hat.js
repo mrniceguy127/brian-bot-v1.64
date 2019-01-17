@@ -43,8 +43,8 @@ class Hat extends Command {
                   if (res.statusCode === 200) {
                     if (res.headers['content-type'].startsWith('image/')) {
                       let hatImageURL = imageURL.href;
-                      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 165, y: 25, w: 175, h: 175 }).then((imageStream) => {
-                        fs.writeFile(__dirname + "/temp/hat/hat.png", imageStream, () => {
+                      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 165, y: 25, w: 175, h: 175 }).then((imageBuffer) => {
+                        fs.writeFile(__dirname + "/temp/hat/hat.png", imageBuffer, () => {
                           request.post({
                             url: 'https://slack.com/api/files.upload',
                             formData: {
