@@ -30,5 +30,11 @@ const Ponder = require('./lib/commands/ponder');
 
 slackController.hears(["bls.ponder"], ["ambient", "direct_message"], (bot, message) => {
   let cmd = new Ponder(bot);
-  cmd.run(message);
+  cmd.run(message, [
+    "Floating-point is evil.",
+    "JS frameworks are unnecessary.",
+    "Coding in binary is superior.",
+    "I should wear festive Christmas headgear.",
+    "Exams are fun."
+  ]);
 });
