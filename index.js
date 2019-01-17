@@ -26,8 +26,9 @@ slackBot.startRTM((err, bot, payload) => {
   }
 });
 
-slackController.hears(["mantissa"], ["ambient", "direct_message"], (bot, message) => {
-  bot.startConversation(message, (err, conversation) => {
-    conversation.say("BEWARE!");
-  });
+const Ponder = require('./lib/commands/ponder');
+
+slackController.hears(["bls.ponder"], ["ambient", "direct_message"], (bot, message) => {
+  let cmd = new Ponder(bot);
+  cmd.run(message);
 });
