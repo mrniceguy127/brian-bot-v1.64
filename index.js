@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const Botkit = require('botkit');
+const Client = require('./lib/client/client');
 
 const slackToken = process.env.CLIENT_TOKEN;
 const slackOAuth = process.env.CLIENT_OAUTH;
@@ -26,15 +27,18 @@ slackBot.startRTM((err, bot, payload) => {
   }
 });
 
-const Ponder = require('./lib/commands/ponder');
+const client = new Client(slackBot, "bls.");
 
-slackController.hears(["bls.ponder"], ["ambient", "direct_message"], (bot, message) => {
-  let cmd = new Ponder(bot);
-  cmd.run(message, [
-    "Floating-point is evil.",
-    "JS frameworks are unnecessary.",
-    "Coding in binary is superior.",
-    "I should wear festive Christmas headgear.",
-    "Exams are fun."
-  ]);
+const Ponder = require('./src/commands/ponder');
+const Hat = require('./src/commands/hat');
+
+let ponderCmd = new Ponder(client);
+let hatCmd = new Hat(client);
+
+slackController.hears([`${client.commandPrefix}${ponderCmd.name}`, `${client.commandPrefix}${hatCmd.name}`], ["ambient", "direct_message"], (bot, message) => {
+  if (message.text.startsWith(`${client.commandPrefix}${ponderCmd.name}`)) {
+    ponderCmd.run(message);
+  } else if (message.text.startsWith(`${client.commandPrefix}${hatCmd.name} `)) {
+    hatCmd.run(message);
+  }
 });
