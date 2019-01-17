@@ -3,5 +3,6 @@
 module.exports = [
   "hat",
   "ponder",
-  "botinfo"
+  "botinfo",
+  "bothelp"
 ];

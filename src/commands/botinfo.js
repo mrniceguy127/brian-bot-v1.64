@@ -1,14 +1,13 @@
-link_names=1
 'use-strict';
 
 const Command = require('../../lib/commands/command.js');
 
-class Ponder extends Command {
+class BotInfo extends Command {
   constructor(client) {
     let options = {
       name: "botinfo",
       description: "Get info about the bot.",
-      format: "bls.info"
+      format: "bls.botinfo"
     };
     super(client, options);
   }
@@ -24,4 +23,4 @@ class Ponder extends Command {
     client.say(message, infoMessage);
   }
 }
-module.exports = Ponder;
+module.exports = BotInfo;
