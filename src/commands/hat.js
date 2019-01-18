@@ -22,7 +22,7 @@ class Hat extends Command {
     let client = this.client;
 
     let sendHat = (hatImageURL) => {
-      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 165, y: 25, w: 175, h: 175 }).then((imageBuffer) => {
+      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 115, y: 25, w: 275, h: 175 }).then((imageBuffer) => {
         fs.writeFile(path.join(__dirname, "/temp/hat/hat.png"), imageBuffer, () => {
           request.post({
             url: 'https://slack.com/api/files.upload',
@@ -114,7 +114,7 @@ class Hat extends Command {
             sendHat(filePath);
           });
         } else {
-          client.say("Sorry dude, I only work with hats of *lossless* quality. But only PNG!!!");
+          client.say(message, "Sorry dude, I only work with hats of *lossless* quality. But only PNG!!!");
           busy = false;
         }
       } else {
