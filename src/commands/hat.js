@@ -53,9 +53,9 @@ class Hat extends Command {
       busy = true;
       const messageText = message.text;
 
-      let urlOffset = this.client.commandPrefix.length + this.name.length;
+      let urlOffset = this.client.commandPrefix.length + this.name.length + 1;
 
-      const imageURLStr = message.text.substring(urlOffset + 2, messageText.length).trim();
+      const imageURLStr = message.text.substring(urlOffset + 2, messageText.length - 1).trim();
 
       if (imageURLStr.length) {
         try {
@@ -73,7 +73,7 @@ class Hat extends Command {
                       busy = false;
                     }
                   } else {
-                    client.say(message, "Pleaase provide a working image URL!");
+                    client.say(message, "Please provide a working image URL!");
                     busy = false;
                   }
                 } else {
@@ -114,7 +114,7 @@ class Hat extends Command {
             sendHat(filePath);
           });
         } else {
-          client.say(message, "Sorry dude, I only work with hats of *lossless* quality. But only PNG!!!");
+          client.say(message, "Sorry, I only work with hats of *lossless* compression. PNG is required!");
           busy = false;
         }
       } else {
