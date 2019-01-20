@@ -25,12 +25,26 @@ class Ponder extends Command {
       "The fact that floating-point numbers cannot precisely represent all real numbers, and that floating-point operations cannot precisely represent true arithmetic operations, leads to many surprising situations.",
       "The mantissa is incalculable.",
       "We can never hope to predict the terrifying power of the mantissa.",
-      "Proprietary closed source software is not my strong suit."
+      "Proprietary closed source software is not my strong suit.",
+      "A book of blue books is quite impossible.",
+      "JavaScript is a particularly difficult language.",
+      "Object-oriented programming is generally overrated.",
+      "I have a little whiteboard thingy.",
+      "I shall have my students program virtual pets. What could go wrong?",
+      "Am I a person?",
+      "Artificial intelligence isn't all it's cracked up to be.",
+      "Why do computer scientists so often confuse Halloween and Christmas?"
     ];
     let i = Math.floor(Math.random() * thoughts.length);
 
-    let thought = thoughts[i];
+    // Prevents the same thought from being outputted twice in a row
+    while(i === this.prevThought)
+    {
+      i = Math.floor(Math.random() * thoughts.length);
+    }
+    this.prevThought = i;
 
+    let thought = thoughts[i];
     client.say(message, thought);
   }
 }
