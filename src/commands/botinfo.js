@@ -14,12 +14,12 @@ class BotInfo extends Command {
     super(client, options);
   }
 
-  async run(message)
+  async run(message, usingPrefix)
   {
     let client = this.client;
     let infoMessage = {
       link_names: 2,
-      text: 'Author(s): <@UFGTEU3TQ> and <@UFGTDHK0W>\nMemer(s): <@UF7GNJVS7>, <@UFGTEU3TQ>, and <@UFGTDHK0W> \nSource Code: https://github.com/mrniceguy127/brian-bot-v1.64'
+      text: '*Brian Bot v1.64*\n\tCreated by: <@UFGTEU3TQ>, <@UFGTDHK0W>, and <@UF7GNJVS7> \n\tSource code: https://github.com/mrniceguy127/brian-bot-v1.64'
     }
 
     client.say(message, infoMessage);

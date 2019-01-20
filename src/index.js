@@ -31,7 +31,8 @@ slackBot.startRTM((err, bot, payload) => {
 const Client = require('../lib/client/client');
 const client = new Client(slackBot, slackController, commandPrefix);
 
-client.loadCommands('./src/commands');
-client.listenForCommands();
+let firstRun = true; // To-do: store in JSON
+let introChannel = firstRun ? process.env.INTRO_CHANNEL : '';
+client.initialize(introChannel, './src/commands');
 
 module.exports = client;

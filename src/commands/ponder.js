@@ -12,7 +12,7 @@ class Ponder extends Command {
     super(client, options);
   }
 
-  async run(message)
+  async run(message, usingPrefix)
   {
     let client = this.client;
 
@@ -22,7 +22,10 @@ class Ponder extends Command {
       "Coding in binary is superior.",
       "I should wear festive Christmas headgear.",
       "Exams are fun.",
-      "The fact that floating-point numbers cannot precisely represent all real numbers, and that floating-point operations cannot precisely represent true arithmetic operations, leads to many surprising situations."
+      "The fact that floating-point numbers cannot precisely represent all real numbers, and that floating-point operations cannot precisely represent true arithmetic operations, leads to many surprising situations.",
+      "The mantissa is incalculable.",
+      "We can never hope to predict the terrifying power of the mantissa.",
+      "Proprietary closed source software is not my strong suit."
     ];
     let i = Math.floor(Math.random() * thoughts.length);
 

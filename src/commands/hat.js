@@ -18,7 +18,7 @@ class Hat extends Command {
     super(client, options);
   }
 
-  async run(message) {
+  async run(message, usingPrefix) {
     let client = this.client;
 
     let sendHat = (hatImageURL) => {
@@ -53,7 +53,7 @@ class Hat extends Command {
       busy = true;
       const messageText = message.text;
 
-      let urlOffset = this.client.commandPrefix.length + this.name.length;
+      let urlOffset = (usingPrefix ? this.client.commandPrefix.length : 0) + this.name.length;
 
       const imageURLStr = message.text.substring(urlOffset + 2, messageText.length - 1).trim();
 
