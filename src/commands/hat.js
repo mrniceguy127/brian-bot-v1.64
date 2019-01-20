@@ -53,7 +53,7 @@ class Hat extends Command {
       busy = true;
       const messageText = message.text;
 
-      let urlOffset = this.client.commandPrefix.length + this.name.length + 1;
+      let urlOffset = this.client.commandPrefix.length + this.name.length;
 
       const imageURLStr = message.text.substring(urlOffset + 2, messageText.length - 1).trim();
 
