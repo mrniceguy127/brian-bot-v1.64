@@ -1,10 +1,10 @@
 'use-strict';
 
 const Command = require('../../lib/commands/command.js');
-const { getOverlayedImage } = require('../../lib/utils/image-overlayer');
 const request = require('request');
 const path = require('path');
 const fs = require('fs');
+const { getOverlayedImage } = require('../../lib/utils/image-overlayer');
 
 let busy = false;
 
@@ -22,7 +22,7 @@ class Hat extends Command {
     let client = this.client;
 
     let sendHat = (hatImageURL) => {
-      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), hatImageURL, { h: 512, w: 512 }, { x: 115, y: 25, w: 275, h: 175 }).then((imageBuffer) => {
+      getOverlayedImage(path.join(__dirname, '/assets/hat/scene.png'), { h: 512, w: 512 }, [{ imageURL: hatImageURL, x: 115, y: 25, w: 275, h: 175 }]).then((imageBuffer) => {
         fs.writeFile(path.join(__dirname, "/temp/hat/hat.png"), imageBuffer, () => {
           request.post({
             url: 'https://slack.com/api/files.upload',
@@ -36,7 +36,7 @@ class Hat extends Command {
             },
           }, (err, res) => {
             if (err) {
-              client.log("Error uploading image!", err);
+              client.log("Error uploading image!\n" + err.stack);
             }
             busy = false;
           });

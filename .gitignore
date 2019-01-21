@@ -60,6 +60,7 @@ typings/
 # next.js build output
 .next
 
-# Temp hat files
+# Temp files
 src/commands/temp/hat/hat.png
 src/commands/temp/hat/hat-to-wear.png
+src/commands/temp/ttt/board.png
