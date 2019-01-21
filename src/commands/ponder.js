@@ -26,14 +26,17 @@ class Ponder extends Command {
       "The mantissa is incalculable.",
       "We can never hope to predict the terrifying power of the mantissa.",
       "Proprietary closed source software is not my strong suit.",
-      "A book of blue books is quite impossible.",
+      "A book of blue books is impossible.",
       "JavaScript is a particularly difficult language.",
       "Object-oriented programming is generally overrated.",
       "I have a little whiteboard thingy.",
       "I shall have my students program virtual pets. What could go wrong?",
       "Am I a person?",
       "Artificial intelligence isn't all it's cracked up to be.",
-      "Why do computer scientists so often confuse Halloween and Christmas?"
+      "Why do computer scientists so often confuse Halloween and Christmas?",
+      "Global variables are nothing to be afraid of.",
+      "Sometimes I dream of two's complement.",
+      "Behold! The CARDIAC is a useful method of demonstrating how computers are programmed on a low level. I have devised a suitable web-based simulation for my students' benefit.",
     ];
     let i = Math.floor(Math.random() * thoughts.length);
 
