@@ -14,11 +14,11 @@ class Janken extends Command {
 
   async run(message, usingPrefix) {
     let client = this.client;
-    let user = message.user;
+    let user = message.incoming.user;
 
-    const msgText = message.text;
+    const msgText = message.incoming.text;
     let argOffset = (usingPrefix ? client.commandPrefix.length : 0) + this.name.length;
-    const argStr = message.text.substring(argOffset + 1, msgText.length).trim()
+    const argStr = message.incoming.text.substring(argOffset + 1, msgText.length).trim()
 
     const move = argStr.toLowerCase();
 

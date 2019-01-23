@@ -20,11 +20,11 @@ class TicTacToe extends Command {
 
   async run(message, usingPrefix) {
     let client = this.client;
-    let user = message.user;
+    let user = message.incoming.user;
 
-    const msgText = message.text;
+    const msgText = message.incoming.text;
     let argOffset = (usingPrefix ? client.commandPrefix.length : 0) + this.name.length;
-    const argStr = message.text.substring(argOffset + 1, msgText.length).trim();
+    const argStr = message.incoming.text.substring(argOffset + 1, msgText.length).trim();
 
     // This user is currently in a game
     if (this.activeGames[user]) {
@@ -182,7 +182,7 @@ class TicTacToe extends Command {
             title: "The Almighty Tic-tac-toe Board",
             filename: "board.png",
             filetype: "png",
-            channels: message.channel,
+            channels: message.incoming.channel,
             file: fs.createReadStream(path.join(__dirname, "/temp/ttt/board.png")),
           },
         }, (err, res) => {

@@ -31,7 +31,7 @@ class Hat extends Command {
               title: "Brian's Hat",
               filename: "hat.png",
               filetype: "png",
-              channels: message.channel,
+              channels: message.incoming.channel,
               file: fs.createReadStream(path.join(__dirname, "/temp/hat/hat.png")),
             },
           }, (err, res) => {
@@ -51,11 +51,11 @@ class Hat extends Command {
       message.say("I'm already making an image. I'm only one man!");
     } else {
       busy = true;
-      const messageText = message.text;
+      const messageText = message.incoming.text;
 
       let urlOffset = (usingPrefix ? this.client.commandPrefix.length : 0) + this.name.length;
 
-      const imageURLStr = message.text.substring(urlOffset + 2, messageText.length - 1).trim();
+      const imageURLStr = message.incoming.text.substring(urlOffset + 2, messageText.length - 1).trim();
 
       if (imageURLStr.length) {
         try {
@@ -90,9 +90,9 @@ class Hat extends Command {
           message.say("Error creating image! Did you enter a valid URL?");
           busy = false;
         }
-      } else if (message.files) {
-        if (message.files[0].filetype === 'png') {
-          let url = message.files[0].url_private;
+      } else if (message.incoming.files) {
+        if (message.incoming.files[0].filetype === 'png') {
+          let url = message.incoming.files[0].url_private;
           let filePath = path.join(__dirname, './temp/hat/hat-to-wear.png');
 
           let options = {
