@@ -19,7 +19,7 @@ class BotInfo extends Command {
     let client = this.client;
     let infoMessage = {
       link_names: 2,
-      text: '*Brian Bot v1.64*\n\tCreated by: <@UFGTEU3TQ>, <@UFGTDHK0W>, and <@UF7GNJVS7> \n\tSource code: https://github.com/mrniceguy127/brian-bot-v1.64'
+      text: '*Brian Bot v1.64*\n\tCreated by: <@UFGTEU3TQ>, <@UFGTDHK0W>, and <@UFM8J2SF5> \n\tSource code: https://github.com/mrniceguy127/brian-bot-v1.64'
     }
 
     message.say(infoMessage);
