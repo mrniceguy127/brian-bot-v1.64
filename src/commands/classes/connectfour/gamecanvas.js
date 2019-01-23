@@ -34,6 +34,7 @@ class GameCanvas {
         }
         ctx.drawImage(boardTile, (x*70)+xCenterOffset, (y*60)+yCenterOffset, 70, 60);
       }
+      ctx.fillStyle = "white";
       ctx.font = "30px Arial";
       ctx.fillText(x+1, ((x)*70)+xCenterOffset+((boardTile.width/2)-10), ((y+1)*60)+yCenterOffset);
     }
