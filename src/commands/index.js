@@ -5,6 +5,7 @@ module.exports = [
   "ponder",
   "marco",
   "ttt",
+  "janken",
   "botinfo",
   "bothelp",
   "connectfour"
