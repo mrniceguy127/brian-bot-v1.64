@@ -37,6 +37,7 @@ class GameCanvas {
       ctx.fillStyle = "white";
       ctx.font = "30px Arial";
       ctx.fillText(x+1, ((x)*70)+xCenterOffset+((boardTile.width/2)-10), ((y+1)*60)+yCenterOffset);
+      ctx.fillStyle = '#000000';
     }
 
     // Use helpful Attachment class structure to process the file for you
