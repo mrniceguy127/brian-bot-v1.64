@@ -46,24 +46,24 @@ class TicTacToe extends Command {
 
               let aiOutcome = this.checkOutcome(this.activeGames[user].userFirst, this.activeGames[user].board);
               if (aiOutcome !== 'none') {
-                client.say(message, (aiOutcome === 'draw') ? "It's a draw!" : "I have emerged victorious!");
+                message.say((aiOutcome === 'draw') ? "It's a draw!" : "I have emerged victorious!");
 
                 this.endGame(user);
               }
             } else {
               this.renderBoard(message, this.activeGames[user].board);
 
-              client.say(message, (userOutcome === 'draw') ? "It's a draw!" : "Drat! You've defeated me, <@" + user + ">.");
+              message.say((userOutcome === 'draw') ? "It's a draw!" : "Drat! You've defeated me, <@" + user + ">.");
               this.endGame(user);
             }
           } else {
-            client.say(message, "Be patient!");
+            message.say("Be patient!");
           }
         } else {
-          client.say(message, "Space " + displayNum + " is full! Please select a different space.");
+          message.say("Space " + displayNum + " is full! Please select a different space.");
         }
       } else {
-        client.say(message, "Choose a space from 1 to 9 in which to make your move.\n\n\tExample: _" + (usingPrefix ? client.commandPrefix : '') + this.name + " 4_");
+        message.say("Choose a space from 1 to 9 in which to make your move.\n\n\tExample: _" + (usingPrefix ? client.commandPrefix : '') + this.name + " 4_");
       }
     }
     else { // Not in-game
@@ -72,7 +72,7 @@ class TicTacToe extends Command {
       } else if (argStr === "O" || argStr === "o" || argStr === "0") {
         this.newGame(user, false, message); // userFirst = false
       } else {
-        client.say(message, "Please specify whether you would like to play as X or O. Whoever chooses X goes first.\n\n\tExample: _" + (usingPrefix ? client.commandPrefix : '') + this.name + " X_");
+        message.say("Please specify whether you would like to play as X or O. Whoever chooses X goes first.\n\n\tExample: _" + (usingPrefix ? client.commandPrefix : '') + this.name + " X_");
       }
     }
   }

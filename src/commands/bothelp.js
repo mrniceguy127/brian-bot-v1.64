@@ -24,7 +24,7 @@ class BotHelp extends Command {
       helpMessage += `\t*${command.name}* - _${command.description}_\n`; // Message formatting.
     });
 
-    client.say(message, helpMessage);
+    message.say(helpMessage);
   }
 }
 module.exports = BotHelp;

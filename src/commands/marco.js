@@ -16,7 +16,7 @@ class Marco extends Command {
   {
     let client = this.client;
 
-    client.say(message, "Polo.");
+    message.say("Polo.");
   }
 }
 module.exports = Marco;

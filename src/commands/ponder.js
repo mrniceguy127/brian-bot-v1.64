@@ -48,7 +48,7 @@ class Ponder extends Command {
     this.prevThought = i;
 
     let thought = thoughts[i];
-    client.say(message, thought);
+    message.say(thought);
   }
 }
 module.exports = Ponder;

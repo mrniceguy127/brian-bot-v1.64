@@ -6,5 +6,6 @@ module.exports = [
   "marco",
   "ttt",
   "botinfo",
-  "bothelp"
+  "bothelp",
+  "connectfour"
 ];

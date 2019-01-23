@@ -48,7 +48,7 @@ class Hat extends Command {
     }
 
     if (busy) {
-      client.say(message, "I'm already making an image. I'm only one man!");
+      message.say("I'm already making an image. I'm only one man!");
     } else {
       busy = true;
       const messageText = message.text;
@@ -69,25 +69,25 @@ class Hat extends Command {
                       let hatImageURL = imageURL.href;
                       sendHat(hatImageURL);
                     } else {
-                      client.say(message, "That URL does not return a valid image!");
+                      message.say("That URL does not return a valid image!");
                       busy = false;
                     }
                   } else {
-                    client.say(message, "Please provide a working image URL!");
+                    message.say("Please provide a working image URL!");
                     busy = false;
                   }
                 } else {
-                  client.say(message, 'Error getting image from URL!');
+                  message.say('Error getting image from URL!');
                   busy = false;
                 }
               });
             } else {
-              client.say(message, "The image URL must be served over the HTTPS protocol!");
+              message.say("The image URL must be served over the HTTPS protocol!");
               busy = false;
             }
           }
         } catch (err) {
-          client.say(message, "Error creating image! Did you enter a valid URL?");
+          message.say("Error creating image! Did you enter a valid URL?");
           busy = false;
         }
       } else if (message.files) {
@@ -105,7 +105,7 @@ class Hat extends Command {
 
           let stream = request(options, (err, res, body) => {
             if (err) {
-              client.say(message, "Error downloading attachment!");
+              message.say("Error downloading attachment!");
               busy = false;
             }
           }).pipe(fs.createWriteStream(filePath));
@@ -114,11 +114,11 @@ class Hat extends Command {
             sendHat(filePath);
           });
         } else {
-          client.say(message, "Sorry, I only work with hats of *lossless* compression. PNG is required!");
+          message.say("Sorry, I only work with hats of *lossless* compression. PNG is required!");
           busy = false;
         }
       } else {
-        client.say(message, "You need to give me a hat to wear!");
+        message.say("You need to give me a hat to wear!");
         busy = false;
       }
     }
