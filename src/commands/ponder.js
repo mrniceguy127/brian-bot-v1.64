@@ -37,6 +37,9 @@ class Ponder extends Command {
       "Global variables are nothing to be afraid of.",
       "Sometimes I dream of two's complement.",
       "Behold! The CARDIAC is a useful method of demonstrating how computers are programmed on a low level. I have devised a suitable web-based simulation for my students' benefit.",
+      "You know what this midterm needs? _ゴゴ ゴ  ゴ_",
+      "Fear not, CCI students. I am here!",
+      "The mantissa is over 9000."
     ];
     let i = Math.floor(Math.random() * thoughts.length);
 
