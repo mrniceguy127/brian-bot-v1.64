@@ -31,8 +31,33 @@ slackBot.startRTM((err, bot, payload) => {
 const Client = require('../lib/client/client');
 const client = new Client(slackBot, slackController, commandPrefix);
 
-let firstRun = true; // To-do: store in JSON
-let introChannel = firstRun ? process.env.INTRO_CHANNEL : '';
-client.initialize(introChannel, './src/commands');
+// Initialize save data
+let firstRun = true;
+const jsonfile = require('jsonfile');
+const firstRunFile = './save-data/first-run.json';
+jsonfile.readFile(firstRunFile, function(err, data) {
+  if (err) {
+    console.error(err);
+  } else {
+    if (data.firstRun === false) {
+      firstRun = false;
+    }
+  }
+  // If first run now, save JSON file for next time indicating firstRun = false
+  if (firstRun) {
+    let toSave = { firstRun: false };
+    jsonfile.writeFile(firstRunFile, toSave, function(err) {
+      if (err) {
+        console.error(err);
+      }
+    });
+  }
+
+  slackController.log("firstRun = " + firstRun);
+
+  // Continue to initialize client
+  let introChannel = firstRun ? process.env.INTRO_CHANNEL : '';
+  client.initialize(introChannel, './src/commands');
+});
 
 module.exports = client;

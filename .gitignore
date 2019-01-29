@@ -65,3 +65,6 @@ src/commands/temp/hat/hat.png
 src/commands/temp/hat/hat-to-wear.png
 src/commands/temp/ttt/board.png
 src/commands/temp/connectfour/connectfour.png
+
+# Save data files
+save-data/first-run.json
