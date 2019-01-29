@@ -1,6 +1,7 @@
 'use-strict';
 
 const Command = require('../../lib/commands/command.js');
+const getRandomString = require('../../lib/utils/get-random-string.js');
 
 class Ponder extends Command {
   constructor(client) {
@@ -10,6 +11,8 @@ class Ponder extends Command {
       format: "ponder"
     };
     super(client, options);
+
+    this.prevThought = -1;
   }
 
   async run(message, usingPrefix)
@@ -41,16 +44,11 @@ class Ponder extends Command {
       "Fear not, CCI students. I am here!",
       "The mantissa is over 9000."
     ];
-    let i = Math.floor(Math.random() * thoughts.length);
 
-    // Prevents the same thought from being outputted twice in a row
-    while(i === this.prevThought)
-    {
-      i = Math.floor(Math.random() * thoughts.length);
-    }
-    this.prevThought = i;
+    let strResult = getRandomString(thoughts, this.prevThought);
+    this.prevThought = strResult.index;
 
-    let thought = thoughts[i];
+    let thought = strResult.string;
     message.say(thought);
   }
 }
