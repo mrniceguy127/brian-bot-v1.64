@@ -20,7 +20,7 @@ class GameUI {
 
   requestNextMove(message) {
     if (this.game.currentPlayerTurn === 2) {
-      message.say(`Make your move <@${message.incoming.user}>!`);
+      message.say(`Make your move <@${message.incoming.user}> (in 30 seconds)!`);
     }
 
     this.getBoardImageBuffer().then(imageBuffer => {

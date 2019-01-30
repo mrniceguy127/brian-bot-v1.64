@@ -57,7 +57,7 @@ class Hat extends Command {
 
       const imageURLStr = message.incoming.text.substring(urlOffset + 2, messageText.length - 1).trim();
 
-      if (imageURLStr.length) {
+      if (imageURLStr.length - 1) {
         try {
           let imageURL = new URL(imageURLStr);
           if (imageURL) {
@@ -88,6 +88,7 @@ class Hat extends Command {
           }
         } catch (err) {
           message.say("Error creating image! Did you enter a valid URL?");
+          console.log(err.stack);
           busy = false;
         }
       } else if (message.incoming.files) {

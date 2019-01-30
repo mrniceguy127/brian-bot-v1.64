@@ -12,6 +12,8 @@ const Command = require('../../lib/commands/command.js');
 let busy = false;
 let currentUser;
 let game, gameUI;
+let timeout;
+let turnTimeout = 30; // seconds
 
 class ConnectFour extends Command {
   constructor(client) {
@@ -65,11 +67,15 @@ class ConnectFour extends Command {
 
               busy = false;
               currentUser = undefined;
+              clearTimeout(timeout);
             }
           }
         );
 
         gameUI.makeMove(message, Math.floor(Math.random() * 7));
+        timeout = setTimeout(() => {
+          gameUI.end(1);
+        }, turnTimeout * 1000);
       }
     }
 
@@ -83,6 +89,10 @@ class ConnectFour extends Command {
       let move = parseInt(args);
       if (move > 0 && move < 8) {
         gameUI.makeMove(message, move - 1);
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          gameUI.end(1);
+        }, turnTimeout * 1000);
       }
     }
   }
