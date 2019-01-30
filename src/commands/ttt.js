@@ -154,7 +154,7 @@ class TicTacToe extends Command {
   {
     let userID = message.incoming.user;
 
-    let boardImg = path.join(__dirname, '/assets/ttt/board' + userID + '.png');
+    let boardImg = path.join(__dirname, '/assets/ttt/board.png');
     let xImg = path.join(__dirname, '/assets/ttt/X.png');
     let oImg = path.join(__dirname, '/assets/ttt/O.png');
 
@@ -175,8 +175,9 @@ class TicTacToe extends Command {
       }
     }
 
+    let tempBoardFile = "/temp/ttt/board-" + userID + ".png";
     getOverlayedImage(boardImg, { h: 500, w: 500 }, overlays).then((imageBuffer) => {
-      fs.writeFile(path.join(__dirname, "/temp/ttt/board.png"), imageBuffer, () => {
+      fs.writeFile(path.join(__dirname, tempBoardFile), imageBuffer, () => {
         request.post({
           url: 'https://slack.com/api/files.upload',
           formData: {
@@ -185,7 +186,7 @@ class TicTacToe extends Command {
             filename: "board.png",
             filetype: "png",
             channels: message.incoming.channel,
-            file: fs.createReadStream(path.join(__dirname, "/temp/ttt/board.png")),
+            file: fs.createReadStream(path.join(__dirname, tempBoardFile)),
           },
         }, (err, res) => {
           if (err) {
