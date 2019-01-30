@@ -152,7 +152,9 @@ class TicTacToe extends Command {
 
   renderBoard(message, board)
   {
-    let boardImg = path.join(__dirname, '/assets/ttt/board.png');
+    let userID = message.incoming.user;
+
+    let boardImg = path.join(__dirname, '/assets/ttt/board' + userID + '.png');
     let xImg = path.join(__dirname, '/assets/ttt/X.png');
     let oImg = path.join(__dirname, '/assets/ttt/O.png');
 
