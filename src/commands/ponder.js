@@ -43,7 +43,7 @@ class Ponder extends Command {
       "You know what this midterm needs? _ゴゴ ゴ  ゴ_",
       "Fear not, CCI students. I am here!",
       "The mantissa is over 9000.",
-      "C++ is better than C because you can memorize the C Standard Library."
+      "C is better than C++ because you can memorize the C Standard Library."
     ];
 
     let strResult = getRandomString(thoughts, this.prevThought);
