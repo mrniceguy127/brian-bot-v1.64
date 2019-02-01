@@ -8,5 +8,6 @@ module.exports = [
   "janken",
   "connectfour",
   "botinfo",
-  "bothelp"
+  "bothelp",
+  "eightball"
 ];
