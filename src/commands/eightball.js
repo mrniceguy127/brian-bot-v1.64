@@ -31,8 +31,8 @@ class EightBall extends Command {
         url: 'https://slack.com/api/files.upload',
         formData: {
           token: process.env.CLIENT_TOKEN,
-          title: "Brian's Hat",
-          filename: "hat.png",
+          title: "Brian's Wise Prediction",
+          filename: "prediction.png",
           filetype: "png",
           channels: message.incoming.channel,
           file: fs.createReadStream(path.join(__dirname, `./assets/eightball/${imageToSend}`))
