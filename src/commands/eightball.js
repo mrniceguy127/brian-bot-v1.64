@@ -1,6 +1,6 @@
 'use-strict';
 
-// Bot help command.
+// 8-ball command.
 
 const fs = require('fs');
 const path = require('path');

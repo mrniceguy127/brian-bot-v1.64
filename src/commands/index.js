@@ -7,7 +7,7 @@ module.exports = [
   "ttt",
   "janken",
   "connectfour",
+  "eightball",
   "botinfo",
-  "bothelp",
-  "eightball"
+  "bothelp"
 ];
