@@ -40,6 +40,8 @@ class EightBall extends Command {
       }, (err, res) => {
         if (err) {
           client.log("Error uploading image!\n" + err.stack);
+        } else {
+          message.say("*Does not represent actual advice of Brian L. Stuart.");
         }
       });
     } else {
