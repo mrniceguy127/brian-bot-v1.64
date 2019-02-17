@@ -17,9 +17,12 @@ class BotInfo extends Command {
   async run(message, usingPrefix)
   {
     let client = this.client;
+
+    let creators = process.env.CREATORS || 'Matt Kleiner and Phoenix Logan';
+
     let infoMessage = {
       link_names: 2,
-      text: '*Brian Bot v1.64*\n\tCreated by: <@UF9NMAD38>, <@UF71Y3M1P>, and <@UF7GNJVS7> \n\tSource code: https://github.com/mrniceguy127/brian-bot-v1.64'
+      text: '*Brian Bot v1.64*\n\tCreated by: ' + creators + ' \n\tSource code: https://github.com/mrniceguy127/brian-bot-v1.64'
     }
 
     message.say(infoMessage);
